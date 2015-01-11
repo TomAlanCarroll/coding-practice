@@ -1,31 +1,34 @@
-import org.junit.*;
-import java.math.BigInteger;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class FibonacciTest {
     @Test
-    public void testIsFibonacci() {
-        assertTrue(Fibonacci.isFibonacci(BigInteger.ZERO));
-        assertTrue(Fibonacci.isFibonacci(BigInteger.ONE));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(2))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(3))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(5))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(8))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(13))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(21))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(34))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(55))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(89))));
-        assertTrue(Fibonacci.isFibonacci(new BigInteger(Integer.toString(144))));
+    public void testIterativeIsFibonacciWithBigIntegers() {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < TestData.fibonacciNumbers.length; i++) {
+            assertTrue(Fibonacci.iterativeIsFibonacci(TestData.fibonacciNumbers[i]));
+        }
 
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(-1))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(4))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(6))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(7))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(42))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(88))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(145))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger(Integer.toString(200))));
-        assertFalse(Fibonacci.isFibonacci(new BigInteger("18446744073709551616")));
+        for (int i = 0; i < TestData.nonFibonacciLargeNumbers.length; i++) {
+            assertFalse(Fibonacci.iterativeIsFibonacci(TestData.nonFibonacciLargeNumbers[i]));
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Completed iterative Fibonacci test in " + (endTime - startTime) + "ms");
+    }
+
+    @Test
+    public void testBinetIsFibonacciWithBigIntegers() {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < TestData.fibonacciNumbers.length; i++) {
+            assertTrue(Fibonacci.binetIsFibonacci(TestData.fibonacciNumbers[i]));
+        }
+
+        for (int i = 0; i < TestData.nonFibonacciLargeNumbers.length; i++) {
+            assertFalse(Fibonacci.binetIsFibonacci(TestData.nonFibonacciLargeNumbers[i]));
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Completed Binet Fibonacci test in     " + (endTime - startTime) + "ms");
     }
 }
