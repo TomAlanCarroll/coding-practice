@@ -1,16 +1,18 @@
+package math;
+
 import java.math.BigInteger;
 
 public class Fibonacci {
     /**
-     * Determines if a given number is part of the Fibonacci sequence
+     * Determines if a given number is part of the math.Fibonacci sequence
      *
      * @param number An integer
-     * @return true if number is part of the Fibonacci sequence, false otherwise
+     * @return true if number is part of the math.Fibonacci sequence, false otherwise
      */
     public static boolean iterativeIsFibonacci(BigInteger number) {
         BigInteger Fprevious = BigInteger.ZERO, Fn = BigInteger.ONE;
 
-        if (number.compareTo(BigInteger.ZERO) < 0) { // Negative numbers are not part of the Fibonacci sequence
+        if (number.compareTo(BigInteger.ZERO) < 0) { // Negative numbers are not part of the math.Fibonacci sequence
             return false;
         }
 
@@ -24,7 +26,7 @@ public class Fibonacci {
             Fprevious = temp;
 
             if (Fn.compareTo(number) == 0) {
-                return true; // this number is a part of the Fibonacci sequence
+                return true; // this number is a part of the math.Fibonacci sequence
             }
         }
 
@@ -32,14 +34,14 @@ public class Fibonacci {
     }
 
     /**
-     * Determines if a given number is part of the Fibonacci sequence if either
+     * Determines if a given number is part of the math.Fibonacci sequence if either
      * of the following are perfect squares: 5(x^2) + 4 or 5(x^2) - 4
      *
      * @param number An integer
-     * @return true if number is part of the Fibonacci sequence, false otherwise
+     * @return true if number is part of the math.Fibonacci sequence, false otherwise
      */
     public static boolean binetIsFibonacci(BigInteger number) {
-        if (number.compareTo(BigInteger.ZERO) < 0) { // Negative numbers are not part of the Fibonacci sequence
+        if (number.compareTo(BigInteger.ZERO) < 0) { // Negative numbers are not part of the math.Fibonacci sequence
             return false;
         }
 
